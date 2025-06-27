@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>VoyageVista</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+</head>
+<body>
+
+<!-- Header/Navbar -->
+<header class="bg-teal text-white p-3 d-flex justify-content-between align-items-center fixed-top z-3">
+  <div class="header-left d-flex align-items-center">
+    <img src="{{ url_for('static', filename='logo-transparent-png.png') }}" alt="VoyageVista Logo" class="logo" style="height: 100px; width: auto;"/>
+    <h1 class="ms-3 mb-0">VoyageVista</h1>
+  </div>
+  <nav>
+    <button class="btn btn-outline-light mx-1" onclick="navigateTo('video-section')">Home</button>
+    <button class="btn btn-outline-light mx-1" onclick="navigateTo('about')">About Us</button>
+    <button class="btn btn-outline-light mx-1" onclick="navigateTo('india')">India</button>
+    <button class="btn btn-outline-light mx-1" onclick="navigateTo('world')">World</button>
+    <button class="btn btn-outline-light mx-1" onclick="navigateTo('tours')">Tours</button>
+    <button class="btn btn-outline-light mx-1" onclick="navigateTo('contact')">Contact</button>
+    <button class="btn btn-warning mx-1" onclick="window.location.href='/plan-itinerary'">Plan My Itinerary</button>
+  </nav>
+</header>
+
+<!-- Video Section -->
+<section class="video-section" id="video-section">
+  <video autoplay muted loop>
+    <source src="https://github.com/Bilal7659/travel-react-app/blob/main/public/Images/beaupak.mp4?raw=true" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+  <div class="search-form">
+    <input type="text" placeholder="Search Tours..." oninput="filterTours(this.value)"/>
+    <span class="search-icon">&#128269;</span>
+  </div>
+</section>
+
+<!-- Heading Below Video -->
+<div class="text-center py-4">
+  <h2 class="text-teal">Explore With VoyageVista</h2>
+</div>
+
+<!-- About Us Section -->
+<section id="about-us" class="py-5 bg-light">
+  <div class="container text-center">
+    <h2>About Us</h2>
+    <p>We are a dedicated team of travel enthusiasts, passionate about helping you discover the world's most beautiful destinations. Our mission is to provide personalized travel experiences that cater to your unique preferences, ensuring a memorable journey every time. Join us on an adventure to explore hidden gems, iconic landmarks, and everything in between!</p>
+  </div>
+</section>
+
+<!-- Indian Tours -->
+<section class="container py-5" id="india">
+  <h2 class="text-center mb-4">Top Indian Tours</h2>
+  <div class="row g-4 justify-content-center" id="india-tours">
+    <!-- Cards dynamically rendered by JavaScript -->
+  </div>
+</section>
+
+<!-- International Tours -->
+<section class="container py-5" id="world">
+  <h2 class="text-center mb-4">Top International Tours</h2>
+  <div class="row g-4 justify-content-center" id="world-tours">
+    <!-- Cards dynamically rendered by JavaScript -->
+  </div>
+</section>
+
+<!-- Reviews Section -->
+<section class="container py-5" id="reviews">
+  <h2 class="text-center mb-4">What Our Travellers Say</h2>
+  <div class="row g-4 justify-content-center">
+    <div class="col-md-4">
+      <div class="testimonial-card p-3">
+        <p>"Had an amazing trip to Bali! Everything was well organized, and the local culture was incredible!"</p>
+        <p><strong>- John Doe</strong></p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="testimonial-card p-3">
+        <p>"The Kashmir Adventure was breathtaking. Truly a once-in-a-lifetime experience!"</p>
+        <p><strong>- Jane Smith</strong></p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="testimonial-card p-3">
+        <p>"Our Paris Getaway was magical. The itinerary was spot-on, and the food was to die for!"</p>
+        <p><strong>- Sarah Lee</strong></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Modal for Tour Details -->
+<div class="tour-modal" id="tour-modal" style="display: none;">
+  <div class="tour-details-box">
+      <h4 id="modal-title"></h4>
+      <p><strong>Duration:</strong> <span id="modal-duration"></span></p>
+      <p><strong>Budget:</strong> <span id="modal-budget"></span></p>
+      <p><strong>Best Season:</strong> <span id="modal-bestSeason"></span></p>
+      <p><strong>Upcoming Tours:</strong></p>
+      <ul id="modal-upcomingTours"></ul>
+      <button onclick="closeModal()">Close</button>
+  </div>
+</div>
+
+<!-- Tours Section -->
+<section class="container py-5" id="tours">
+  <h2 class="text-center mb-4">Upcoming Group Tours</h2>
+  <ul class="list-group">
+    <li class="list-group-item">Kashmir Adventure - May 20, 2025</li>
+    <li class="list-group-item">Paris Getaway - June 10, 2025</li>
+    <li class="list-group-item">Bali Bliss - July 15, 2025</li>
+  </ul>
+</section>
+
+<!-- Contact Form -->
+<section class="container my-5" id="contact">
+  <h2 class="text-center mb-4">Contact Us</h2>
+  <form class="row g-3" onsubmit="submitForm(event)">
+    <div class="col-md-6">
+      <input type="text" class="form-control" id="name" placeholder="Your Name" required>
+    </div>
+    <div class="col-md-6">
+      <input type="email" class="form-control" id="email" placeholder="Your Email" required>
+    </div>
+    <div class="col-12">
+      <textarea class="form-control" id="message" rows="4" placeholder="Your Message" required></textarea>
+    </div>
+    <div class="col-12 text-center">
+      <button type="submit" class="btn btn-teal">Send Message</button>
+    </div>
+  </form>
+</section>
+
+<!-- Footer -->
+<footer class="text-center py-4 bg-dark text-white">
+  <p>&copy; 2024 VoyageVista. All rights reserved.</p>
+</footer>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

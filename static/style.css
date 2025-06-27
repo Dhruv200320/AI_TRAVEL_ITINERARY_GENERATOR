@@ -1,0 +1,127 @@
+/* Save as style.css */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  transition: background-color 0.3s;
+}
+
+body.dark {
+  background-color: #1e1e1e;
+  color: #eee;
+}
+
+.bg-teal {
+  background-color: #008080;
+}
+
+.btn-teal {
+  background-color: #008080;
+  color: white;
+  border: none;
+}
+
+.btn-teal:hover {
+  background-color: #006666;
+}
+
+.text-teal {
+  color: #008080;
+}
+
+header {
+  height: 80px;
+  padding: 0 20px;
+  background-color: #008080;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.header-left h1 {
+  font-size: 1.75rem; /* Increase this value as needed */
+  font-weight: bold;
+  margin: 0;
+}
+
+.logo {
+  height: 60px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+  margin-left: -20px; /* adjust this value as needed */
+}
+
+
+
+
+.video-section {
+  position: relative;
+  top: 80px;
+  width: 100%;
+  height: calc(100vh - 80px);
+  overflow: hidden;
+}
+
+.video-section video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.search-form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40%;
+  z-index: 2;
+}
+
+.search-form input {
+  width: 100%;
+  padding: 10px 20px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+}
+
+.search-icon {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  font-size: 18px;
+}
+
+.testimonial-card {
+  background: #e0f7f7;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.subscribe-section {
+  background-color: #d9f4f4;
+}
+
+#scrollBtn {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  z-index: 100;
+  padding: 10px 15px;
+  background-color: #008080;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 18px;
+  display: none;
+  cursor: pointer;
+}
